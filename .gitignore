@@ -30,6 +30,10 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+<<<<<<< HEAD
+.idea/
+=======
+>>>>>>> e3f7a8e676a0a8c8a72e0e10c82e756b5ffdfa7e
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -347,4 +351,8 @@ healthchecksdb
 MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
+<<<<<<< HEAD
 .ionide/
+=======
+.ionide/
+>>>>>>> e3f7a8e676a0a8c8a72e0e10c82e756b5ffdfa7e
