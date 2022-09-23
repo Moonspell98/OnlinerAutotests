@@ -10,7 +10,9 @@ public class ConfiguratorService
     public static IConfiguration Configuration => s_configuration.Value;
 
     public static string BaseUrl => Configuration[nameof(BaseUrl)];
-
+    public static string BrowserType => Configuration[nameof(BrowserType)];
+    public static int WaitTimeout => int.Parse(Configuration[nameof(WaitTimeout)]);
+        
     static ConfiguratorService()
     {
         s_configuration = new Lazy<IConfiguration>(BuildConfiguration);
