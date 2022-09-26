@@ -9,9 +9,7 @@ namespace PageObject.Services
 {
     public class DriverFactory
     {
-        [ThreadStatic] public static IWebDriver Driver = GetChromeDriver();
-
-        private static IWebDriver GetChromeDriver()
+        public IWebDriver GetChromeDriver()
         {
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArguments("--incognito");

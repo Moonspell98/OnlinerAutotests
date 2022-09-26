@@ -12,7 +12,7 @@ public class LoginCaptchaPopup : BasePopup
     public IWebElement CaptchaCheckbox => WaitService.WaitElementExists(CaptchaCheckboxLocator);
     public IWebElement CaptchaFrame => WaitService.WaitElementExists(CaptchaFrameLocator);
     
-    public LoginCaptchaPopup(string containerXpath) : base(containerXpath)
+    public LoginCaptchaPopup(IWebDriver driver ,string containerXpath) : base(driver, containerXpath)
     {
         Console.WriteLine(Driver.GetHashCode());
     }

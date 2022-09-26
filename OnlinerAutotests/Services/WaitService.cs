@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System.Collections.ObjectModel;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
 namespace OnlinerAutotests.Services;
@@ -25,6 +26,11 @@ public class WaitService
     public IWebElement WaitElementIsVisible(By locator)
     {
         return _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator));
+    }
+    
+    public ReadOnlyCollection<IWebElement> WaitElementsAreVisible(By locator)
+    {
+        return _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
     }
     
     public IWebElement WaitElementExists(By locator)

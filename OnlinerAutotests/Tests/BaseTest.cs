@@ -5,12 +5,19 @@ namespace OnlinerAutotests.Tests;
 
 public class BaseTest
 {
-    protected static IWebDriver Driver = DriverFactory.Driver;
-
+    protected IWebDriver Driver;
+    private DriverFactory DriverFactory = new DriverFactory();
+    
+    [SetUp]
+    public void SetUp()
+    {
+        Driver = DriverFactory.GetChromeDriver();
+    }
 
     [TearDown]
     public void TearDown()
     {
+        Driver.Close();
         Driver.Quit();
     }
 }

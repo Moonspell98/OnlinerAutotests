@@ -12,6 +12,9 @@ public class ConfiguratorService
     public static string BaseUrl => Configuration[nameof(BaseUrl)];
     public static string BrowserType => Configuration[nameof(BrowserType)];
     public static int WaitTimeout => int.Parse(Configuration[nameof(WaitTimeout)]);
+    public static string Email => Configuration[nameof(Email)];
+    public static string Password => Configuration[nameof(Password)];
+    public static string UserName => Configuration[nameof(UserName)];
         
     static ConfiguratorService()
     {

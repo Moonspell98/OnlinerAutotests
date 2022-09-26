@@ -1,24 +1,25 @@
 ﻿using OnlinerAutotests.Pages;
 using OnlinerAutotests.Popups;
+using OnlinerAutotests.Services;
 
 namespace OnlinerAutotests.Tests;
 
 public class LoginTest : BaseTest
 {
     [Test]
-    public void TestSuccessLogin()
+    public void SuccessLoginTest()
     {
         MainPage mainPage = new MainPage(Driver, true);
         mainPage.ClickOnLoginButton();
-        LoginPopup loginPopup = new LoginPopup("//*[@id='auth-container']");
-        loginPopup.EnterNick("robert.minear365@gmail.com");
-        loginPopup.EnterPassword("casm9hir8LOT@klap\"");
+        LoginPopup loginPopup = new LoginPopup(Driver,"//*[@id='auth-container']");
+        loginPopup.EnterEmail(ConfiguratorService.Email);
+        loginPopup.EnterPassword(ConfiguratorService.Password);
         loginPopup.Login();
-        LoginCaptchaPopup loginCaptchaPopup = new LoginCaptchaPopup("//*[@id='rc-anchor-container']");
+        LoginCaptchaPopup loginCaptchaPopup = new LoginCaptchaPopup(Driver, "//*[@id='rc-anchor-container']");
         loginCaptchaPopup.SwitchOnCaptchaFrame();
         loginCaptchaPopup.PressOnCaptchaCheckBox();
         Assert.IsTrue(mainPage.UserIcon.Displayed);
         mainPage.ClickOnProfileArrow();
-        Assert.AreEqual("3528681", mainPage.UserName.Text);
+        Assert.That(mainPage.UserName.Text, Is.EqualTo(ConfiguratorService.UserName));
     }
 }

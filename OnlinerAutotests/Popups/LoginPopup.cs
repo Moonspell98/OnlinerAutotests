@@ -13,11 +13,11 @@ public class LoginPopup : BasePopup
     private IWebElement PasswordInputField => Driver.FindElement(PasswordInputFieldLocator);
     private IWebElement SubmitButton => Driver.FindElement(SubmitButtonLocator);
     
-    public LoginPopup(string containerXpath) : base(containerXpath)
+    public LoginPopup(IWebDriver driver ,string containerXpath) : base(driver,containerXpath)
     {
     }
 
-    public void EnterNick(string nickName) => EmailInputField.SendKeys(nickName);
+    public void EnterEmail(string email) => EmailInputField.SendKeys(email);
     public void EnterPassword(string password) => PasswordInputField.SendKeys(password);
     public void Login() => SubmitButton.Click();
 }
