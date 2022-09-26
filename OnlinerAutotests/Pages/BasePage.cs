@@ -11,8 +11,6 @@ public abstract class BasePage
 
     protected abstract void OpenPage();
 
-    protected abstract bool IsPageOpened();
-
     protected BasePage(IWebDriver driver, bool openPageByUrl)
     {
         Driver = driver;
@@ -20,23 +18,6 @@ public abstract class BasePage
         if (openPageByUrl)
         {
             OpenPage();
-        }
-    }
-
-    private void WaitForOpen()
-    {
-        var secondsCount = 0;
-        var isPageOpenedIndicator = IsPageOpened();
-
-        while (!isPageOpenedIndicator && secondsCount < (WaitForPageLoadingTime))
-        {
-            secondsCount++;
-            isPageOpenedIndicator = IsPageOpened();
-        }
-
-        if (!isPageOpenedIndicator)
-        {
-            throw new AssertionException("Page was not opened");
         }
     }
 

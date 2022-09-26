@@ -17,6 +17,8 @@ public class LoginTest : BaseTest
         LoginCaptchaPopup loginCaptchaPopup = new LoginCaptchaPopup("//*[@id='rc-anchor-container']");
         loginCaptchaPopup.SwitchOnCaptchaFrame();
         loginCaptchaPopup.PressOnCaptchaCheckBox();
-        Thread.Sleep(TimeSpan.FromSeconds(5));
+        Assert.IsTrue(mainPage.UserIcon.Displayed);
+        mainPage.ClickOnProfileArrow();
+        Assert.AreEqual("3528681", mainPage.UserName.Text);
     }
 }
