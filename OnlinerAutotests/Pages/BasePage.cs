@@ -1,5 +1,6 @@
 ﻿using OnlinerAutotests.Services;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace OnlinerAutotests.Pages;
 

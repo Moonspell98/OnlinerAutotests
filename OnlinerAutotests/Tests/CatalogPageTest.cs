@@ -2,10 +2,10 @@
 
 namespace OnlinerAutotests.Tests;
 
-public class CategoriesPageTest : BaseTest
+public class CatalogPageTest : BaseTest
 {
     [Test]
-    public void OpenCategoriesPage()
+    public void OpenCatalogPage()
     {
         MainPage mainPage = new MainPage(Driver, true);
         mainPage.ClickOnCatalogLink();
@@ -15,6 +15,5 @@ public class CategoriesPageTest : BaseTest
         {
             Assert.IsTrue(category.Displayed);
         }
-        
     }
 }
