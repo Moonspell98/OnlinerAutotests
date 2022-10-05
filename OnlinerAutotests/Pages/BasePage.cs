@@ -9,6 +9,8 @@ public abstract class BasePage
     private const int WaitForPageLoadingTime = 10;
     [ThreadStatic] private static IWebDriver? _driver;
     private static WaitService _waitService;
+    
+    private readonly By CartButtonLocator = By.XPath("//*[@class='auth-bar__item auth-bar__item--cart']");
 
     protected abstract void OpenPage();
 
@@ -32,4 +34,8 @@ public abstract class BasePage
     {
         get => _waitService;
     }
+
+    public IWebElement CartButton => WaitService.WaitElementIsVisible(CartButtonLocator);
+
+    public void ClickOnCartButton() => CartButton.Click();
 }

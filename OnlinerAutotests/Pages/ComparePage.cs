@@ -14,7 +14,8 @@ public class ComparePage : BasePage
     private readonly By ProductsCellsTitlesLocator =
         By.XPath(
             "//*[@class='product-table__row product-table__row_header product-table__row_top']//*[@class='product-table__cell']//*[@class='product-summary__caption']");
-    private readonly By CompareRowsLocator = By.XPath("//*[@class='product-table__row product-table__row_parameter ']"); 
+    private readonly By CompareRowsLocator = By.XPath("//*[@class='product-table__row product-table__row_parameter ']");
+    private readonly By DifferentCellsWithAccentLocator = By.XPath("//*[normalize-space(@class) = 'product-table__cell product-table__cell_accent']");
     
     public ComparePage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
     {
@@ -29,4 +30,5 @@ public class ComparePage : BasePage
     public IWebElement SecondProductCellTitle => WaitService.WaitElementIsVisible(SecondProductCellTitleLocator);
     public ReadOnlyCollection<IWebElement> ProductsCellsTitles => WaitService.WaitElementsAreVisible(ProductsCellsTitlesLocator);
     public ReadOnlyCollection<IWebElement> CompareRows => WaitService.WaitElementsAreVisible(CompareRowsLocator);
+    public ReadOnlyCollection<IWebElement> DifferentCellsWithAccent => WaitService.WaitElementsAreVisible(DifferentCellsWithAccentLocator);
 }

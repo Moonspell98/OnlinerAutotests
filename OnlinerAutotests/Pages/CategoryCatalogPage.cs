@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace OnlinerAutotests.Pages;
 
-public class TvCatalogPage : BasePage
+public class CategoryCatalogPage : BasePage
 {
     private const string EndPoint = "/tv";
     
@@ -12,7 +12,7 @@ public class TvCatalogPage : BasePage
     private readonly By SecondProductMainTitleLocator =
         By.XPath("((//*[@class='schema-product__group'])[2]//*[@class='schema-product__title'])[1]");
     
-    public TvCatalogPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
+    public CategoryCatalogPage(IWebDriver driver, bool openPageByUrl) : base(driver, openPageByUrl)
     {
     }
 
