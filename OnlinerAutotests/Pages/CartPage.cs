@@ -7,7 +7,7 @@ namespace OnlinerAutotests.Pages;
 public class CartPage : BasePage
 {
     private readonly By ProductTitleLocator = By.XPath("//*[@class='cart-form__offers-part cart-form__offers-part_data']//a");
-    private readonly By ProductPriceLocator = By.XPath("//*[contains(@class, 'cart-form__offers-part_price_specific')]");
+    private readonly By ProductPriceLocator = By.XPath("//*[contains(@class, 'cart-form__offers-part_price_specific')]//*[contains(@class, 'cart-form__description_primary')]");
     private readonly By ProductsCountLocator = By.XPath("//*[contains(@class, 'cart-form__offers-part_count')]//input");
     private readonly By NavigateToOrderPageButtonLocator = By.XPath("//*[contains(@class, 'cart-form__button button-style_primary')]");
 
@@ -34,7 +34,7 @@ public class CartPage : BasePage
     
     public bool IsProductPriceEqual(string addedProductPrice)
     {
-        return ProductPrice.Text == addedProductPrice;
+        return ProductPrice.Text.Equals(addedProductPrice);
     }
     
     public bool IsProductsCountEqual(string addedProductsCount)

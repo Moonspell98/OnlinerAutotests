@@ -38,4 +38,10 @@ public class CatalogPage : BasePage
     public void ClickOnElectronicsCategory() => ElectronicsCategory.Click();
     public void HoverOnSubCategory(IWebElement subCategory) => Actions.MoveToElement(subCategory).Perform();
     public void ClickOnCatalogLink(IWebElement catalogLink) => catalogLink.Click();
+
+    public CategoryCatalogPage NavigateOnCategoryCatalogPage(IWebElement categoryCatalogLink)
+    {
+        categoryCatalogLink.Click();
+        return new CategoryCatalogPage(Driver, false);
+    }
 }

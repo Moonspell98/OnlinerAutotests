@@ -9,26 +9,22 @@ public class OfferTest : BaseTest
     {
         MainPage mainPage = new MainPage(Driver, true);
         mainPage.ClickOnCatalogLink();
-        
-        CatalogPage catalogPage = new CatalogPage(Driver, false);
+
+        CatalogPage catalogPage = mainPage.NavigateOnCatalogPage();
         catalogPage.ClickOnElectronicsCategory();
         catalogPage.HoverOnSubCategory(catalogPage.VideoGamesSubCategory);
-        catalogPage.ClickOnCatalogLink(catalogPage.ConsolesCatalogLink);
-
-        CategoryCatalogPage categoryCatalogPage = new CategoryCatalogPage(Driver, false);
+        
+        CategoryCatalogPage categoryCatalogPage = catalogPage.NavigateOnCategoryCatalogPage(catalogPage.ConsolesCatalogLink);
         string productTitle = categoryCatalogPage.FirstProduct.Text;
-        categoryCatalogPage.ClickOnProductTitle(categoryCatalogPage.FirstProduct);
 
-        ProductPage productPage = new ProductPage(Driver, false);
-        productPage.CitySubmitButton.Click();
-        productPage.ClickOnSellersOffersButton();
+        ProductPage productPage = categoryCatalogPage.NavigateOnProductPage(categoryCatalogPage.FirstProduct);
+        productPage.SubmitCity();
 
-        ProductSellersPage productSellersPage = new ProductSellersPage(Driver, false);
-        string firstSellerPrice = productSellersPage.FirstSellerPrice.Text;
+        ProductSellersPage productSellersPage = productPage.NavigateOnProductSellersPage();
+        string firstSellerPrice = productSellersPage.GetFirstSellerPrice();
         productSellersPage.AddToCartProductFromFirstSeller();
-        productSellersPage.NavigateToCart();
 
-        CartPage cartPage = new CartPage(Driver, false);
+        CartPage cartPage = productSellersPage.NavigateToCart();
         Assert.IsTrue(cartPage.IsProductTitleEqual(productTitle));
         Assert.IsTrue(cartPage.IsProductPriceEqual(firstSellerPrice));
         Assert.IsTrue(cartPage.IsProductsCountEqual("1"));

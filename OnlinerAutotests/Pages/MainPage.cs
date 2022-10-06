@@ -55,4 +55,10 @@ public class MainPage : BasePage
     public IWebElement UserName => WaitService.WaitElementIsVisible(UserNameLocator);
     public IWebElement SearchField => WaitService.WaitElementIsVisible(SearchFieldLocator);
     public IWebElement CatalogLink => WaitService.WaitElementIsVisible(CatalogLinkLocator);
+
+    public CatalogPage NavigateOnCatalogPage()
+    {
+        CatalogLink.Click();
+        return new CatalogPage(Driver, false);
+    }
 }
